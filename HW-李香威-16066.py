@@ -57,12 +57,18 @@ car0 = pd.read_csv(path)
 issues = pd.get_dummies(car0['problem'], prefix='problem')
 car1 = car0.join(issues)
 
-# plot by brand, model, 
-import seaborn as sns
-sns.countplot(data=car0, y='brand', hue='car_model')
-      
+# complains count 
+brand_count = car0['brand'].value_counts()
+model_count = car0['car_model'].value_counts()
 
-#%%
+
+# plot by brand, model, 
+import matplotlib.pyplot as plt
+plt.pie(brand_count, labels=brand_count)
+plt.pie(model_count, labels=model_count)
+
+
+
      
       
       
